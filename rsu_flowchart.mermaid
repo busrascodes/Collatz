@@ -1,0 +1,28 @@
+flowchart TD
+    A["BAŞLA"]
+    B["Seed = 42"]
+    C["n = 10000 bit üret"]
+    D["state = seed"]
+    E["state = state × 1103515245 + 12345"]
+    F["bit = state mod 2"]
+    G["Diziye ekle"]
+    H{n bit üretildi?}
+    I["0 ve 1'leri say"]
+    J["Ki-Kare Testi Yap"]
+    K{χ² < 3.841?}
+    L["✓ RASTGELE"]
+    M["✗ RASTGELE DEĞİL"]
+    N["SON"]
+    
+    A --> B --> C
+    C --> D
+    D --> E --> F --> G
+    G --> H
+    H -->|Hayır| E
+    H -->|Evet| I
+    I --> J
+    J --> K
+    K -->|Evet| L
+    K -->|Hayır| M
+    L --> N
+    M --> N
